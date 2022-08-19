@@ -4,9 +4,7 @@ const { BlogPost, Comment } = require('../../models');
 // GET all blog posts for homepage
 router.get('/', async (req, res) => {
   try {
-    const dbBlogPostData = await BlogPost.findAll({
-      include: [ { model: Comment } ],
-    });
+    const dbBlogPostData = await BlogPost.findAll();
     res.status(200).json(dbBlogPostData);
 
     // Send over the 'loggedIn' session variable to the 'homepage' template
@@ -23,7 +21,9 @@ router.get('/', async (req, res) => {
 // When user selects on a single post on home page
 router.get('/blogpost/:id', async (req, res) => {
   try {
-    const dbSelectedBlogPost = await BlogPost.findByPk(req.params.id);
+    const dbSelectedBlogPost = await BlogPost.findByPk(req.params.id, {
+        include: [ { model: Comment } ]
+    });
 
    const selectedBlogPost = dbSelectedBlogPost.get({ plain: true });
     // Send over the 'loggedIn' session variable to the 'gallery' template

@@ -16,7 +16,7 @@ BlogPost.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.BLOB,
       allowNull: false,
     },
     date: {
@@ -29,14 +29,6 @@ BlogPost.init(
       references: {
         model: 'user',
         key: 'id',
-      }
-    },
-    comment_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'comment',
-        key: 'id'
       }
     }
   },

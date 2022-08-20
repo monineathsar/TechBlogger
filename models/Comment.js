@@ -12,7 +12,7 @@ Comment.init(
       autoIncrement: true,
     },
     date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     user_id: {
@@ -24,11 +24,11 @@ Comment.init(
       }
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.BLOB,
       allowNull: false,
     },
     blogPost_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'blogPost',

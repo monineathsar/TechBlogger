@@ -1,0 +1,20 @@
+{{!-- edit blog post form --}}
+<section id="cards" class="cards">
+    <div>
+        Edit your post below:
+    </div>
+    <main>
+        <div>
+            <label for="BlogTitle" class="">Blog Title (Required) </label>
+            <input type="input" class="form-control" id="blogTitle" value={{singleBlog.title}}>
+        </div>
+        <div>
+            <label for="BlogContent" class="">Content (Required) </label>
+            <textarea class="form-control" id="blogContent" rows="3">{{singleBlog.content}}</textarea>
+        </div>
+        <footer>
+            <button type="submit" class="btn btn-primary" id="createBtn">Update Post</button>
+            <button type="button" class="btn btn-primary" id="deleteBtn" onclick="deleteCard('{{{singleBlog.id}}}')">Delete Post</button>
+        </footer>
+    </main>
+  </section>

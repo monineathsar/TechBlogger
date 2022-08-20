@@ -3,7 +3,11 @@ const { BlogPost, Comment } = require('../models');
 
 // GET all blog posts for homepage
 router.get('/', async (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login')
+  }
   try {
+
     const dbBlogPostData = await BlogPost.findAll();
     res.status(200).json(dbBlogPostData);
 

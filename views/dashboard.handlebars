@@ -1,0 +1,13 @@
+{{#if BlogPosts.length}}
+
+<section id="blogPost" class="blogPost">
+
+    <h2>Your Posts</h2>
+    {{#each BlogPosts as |singleBlogPost|}}
+      {{> userpostsummary singleBlogPost}}
+    {{/each}}
+
+  </section>
+{{/if}}
+
+<button type="submit" class="btn"><a class="link" href="/new">+ New Post</a></button>

@@ -1,0 +1,23 @@
+<section id="blogPost" class="blogPost">
+
+    {{#each BlogPosts as |singleBlogPost|}}
+
+      {{!-- each blog post --}}
+      <main>
+        <section>
+          <h3>{{singleBlogPost.title}}</h3>
+          <h6> Posted on {{singleBlogPost.date}}</h6>
+        </section>
+        <footer>
+            <button id="editBtn" onclick="getJobForm('{{singleBlogPost.id}}')">
+              <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
+            </button>
+            <button id="deleteBtn" onclick="deleteCard('{{{singleBlogPost.id}}}')">
+              <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+            </button>
+        </footer>
+      </main>
+
+    {{/each}}
+
+  </section>

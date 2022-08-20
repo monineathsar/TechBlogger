@@ -1,18 +1,13 @@
-<section id="blogPost" class="blogPost">
+{{!-- <section id="blogPost" class="blogPost">
+    <main href="/blogpost/">
+      <section>
+        <h3>{{blogPost}}</h3>
+        <h6>Posted by {{blogPost.user.username}} on {{blogPost.date}}</h6>
+      </section>
+      <section>
+        <p>{{blogPost.content}}</p>
+      </section>
+    </main>
+</section> --}}
 
-    {{#each BlogPosts as |singleBlogPost|}}
-
-      {{!-- each blog post --}}
-      <main href="/blogpost/{{id}}">
-        <section>
-          <h3>{{singleBlogPost.title}}</h3>
-          <h6>Posted by {{singleBlogPost.user.username}} on {{singleBlogPost.date}}</h6>
-        </section>
-        <section>
-          <p>{{singleBlogPost.content}}</p>
-        </section>
-      </main>
-
-    {{/each}}
-
-  </section>
+<div>{{blogPost.id}}</div>

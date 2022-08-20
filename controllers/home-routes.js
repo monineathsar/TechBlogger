@@ -1,19 +1,27 @@
 const router = require('express').Router();
-const { BlogPost, Comment } = require('../models');
+const { BlogPost, Comment, User } = require('../models');
 
 // GET all blog posts for homepage
 router.get('/', async (req, res) => {
+  console.log(req.session);
   if (!req.session.loggedIn) {
     return res.redirect('/login')
   }
   try {
 
-    const dbBlogPostData = await BlogPost.findAll();
-    res.status(200).json(dbBlogPostData);
-
+    const dbBlogPostData = await BlogPost.findAll({
+      include: [
+        {
+          model: User,
+          attributes:['username']
+        }
+      ]
+    });
+    const blogPosts = dbBlogPostData.map(blogPostData => blogPostData.get({plain:true}));
     // Send over the 'loggedIn' session variable to the 'homepage' template
     res.render('homepage', {
       loggedIn: req.session.loggedIn,
+      blogPosts: blogPosts
     });
     
   } catch (err) {

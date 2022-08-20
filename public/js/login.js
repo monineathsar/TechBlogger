@@ -17,7 +17,7 @@ loginBtn.addEventListener('click', async (event) => {
                 password,
             })
         });
-        await response.json();
+        window.location.href = '/'; 
     } catch (error) {
         alert(error);
     }

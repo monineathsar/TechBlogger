@@ -1,13 +1,22 @@
-{{#if BlogPosts.length}}
-
-<section id="blogPost" class="blogPost">
-
+<section id="blogPosts" class="blogPosts">
     <h2>Your Posts</h2>
-    {{#each BlogPosts as |singleBlogPost|}}
-      {{> userpostsummary singleBlogPost}}
+    {{#each blogPosts as |blogPost|}}
+      <main>
+        <section>
+          <h3>{{blogPost.title}}</h3>
+          <h6> Posted on {{blogPost.date}}</h6>
+        </section>
+        <footer>
+            <button id="editBtn" onclick="getJobForm('{{blogPost.id}}')">
+              <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
+            </button>
+            <button id="deleteBtn" onclick="deleteCard('{{{blogPost.id}}}')">
+              <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+            </button>
+        </footer>
+      </main>
     {{/each}}
-
   </section>
-{{/if}}
+
 
 <button type="submit" class="btn"><a class="link" href="/new">+ New Post</a></button>

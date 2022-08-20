@@ -4,14 +4,13 @@ const { User, BlogPost, Comment } = require('../models');
 // GET all blog posts for user dashboard
 router.get('/', async (req, res) => {
   try {
-    const dbUserBlogPosts = await User.findByPk(req.session.user.id, {
-      include: [ { model: BlogPost } ]
-    });
-    res.status(200).json(dbUserBlogPosts);
-
+    const dbBlogPosts = await BlogPost.findAll({where: {user_id: req.session.user}});
+    const blogPosts = dbBlogPosts.map(blogPostData => blogPostData.get({plain:true}));
+    console.log(blogPosts);
     // Send over the 'loggedIn' session variable to the 'dashboard' template
     res.render('dashboard', {
       loggedIn: req.session.loggedIn,
+      blogPosts: blogPosts
     });
     
   } catch (err) {

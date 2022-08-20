@@ -19,7 +19,6 @@ signUpBtn.addEventListener('click', async (event) => {
                 password,
             })
         });
-        await response.json();
         // change user window to the /users endpoint
         window.location.href = '/';
     } catch (error) {

@@ -1,9 +1,13 @@
-<section id="blogPost" class="blogPost">
-
-    {{#each BlogPosts as |singleBlogPost|}}
-
-    {{>postsummary singleBlogPost}}
-
-    {{/each}}
-
-  </section>
+<section id="blogPosts" class="blogPosts">
+  {{#each blogPosts as |blogPost|}}
+    <main href="/blogpost/{{blogPost.id}}">
+      <section>
+        <h3>{{blogPost.title}}</h3>
+        <h6>Posted by {{blogPost.user.username}} on {{blogPost.date}}</h6>
+      </section>
+      <section>
+        <p>{{blogPost.content}}</p>
+      </section>
+    </main>
+  {{/each}}
+</section>

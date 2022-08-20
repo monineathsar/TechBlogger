@@ -3,15 +3,15 @@ const { User } = require('../models');
 const userData = [
   {
     username: 'SalLovesPizza_95',
-    password: 'password12345'
+    password: '$2b$10$pzkd617K3Tll3avRlf/bceTHm4nBUTJKglTQooiDuaTFzjvkU0iia'
   },
   {
     username: 'Lernantino_81',
-    password: 'password12345'
+    password: '$2b$10$pzkd617K3Tll3avRlf/bceTHm4nBUTJKglTQooiDuaTFzjvkU0iia'
   },
   {
     username: 'AmikoIsTheBest',
-    password: 'password12345'
+    password: '$2b$10$pzkd617K3Tll3avRlf/bceTHm4nBUTJKglTQooiDuaTFzjvkU0iia'
   }
 ];
 

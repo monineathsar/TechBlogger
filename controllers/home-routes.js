@@ -49,4 +49,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Signup route
+router.get('/signup', (req, res) => {
+  // Otherwise, render the 'login' template
+  res.render('signup');
+});
+
+
 module.exports = router;

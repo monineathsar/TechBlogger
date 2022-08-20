@@ -27,10 +27,8 @@ router.post('/login', async (req, res) => {
     const dbUserData = await User.findOne({
       where: {
         username: req.body.username,
-        password: req.body.password,
       },
     });
-
     if (!dbUserData) {
       res
         .status(400)
@@ -50,7 +48,6 @@ router.post('/login', async (req, res) => {
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
       req.session.loggedIn = true;
-
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });

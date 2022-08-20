@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { User, BlogPost, Comment } = require('../../models');
+const { User, BlogPost, Comment } = require('../models');
 
 // GET all blog posts for user dashboard
-router.get('/myposts', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const dbUserBlogPosts = await User.findByPk(req.session.user.id, {
       include: [ { model: BlogPost } ]
@@ -37,7 +37,7 @@ router.get('/blogpost/:id', async (req, res) => {
 });
 
 // when user creates a new blog post
-router.post('/myposts/new', async (req, res) => {
+router.post('/new', async (req, res) => {
 
     const newBlogPost = await BlogPost.create({
         userId: req.session.user.id,

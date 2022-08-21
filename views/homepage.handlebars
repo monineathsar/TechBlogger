@@ -1,6 +1,6 @@
 <section id="blogPosts" class="blogPosts">
   {{#each blogPosts as |blogPost|}}
-    <main href="/blogpost/{{blogPost.id}}">
+    <a href="/blogpost/{{blogPost.id}}">
       <section>
         <h3>{{blogPost.title}}</h3>
         <h6>Posted by {{blogPost.user.username}} on {{blogPost.date}}</h6>
@@ -8,6 +8,6 @@
       <section>
         <p>{{blogPost.content}}</p>
       </section>
-    </main>
+    </a>
   {{/each}}
 </section>

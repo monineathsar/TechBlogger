@@ -30,22 +30,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// When user selects on a single post on home page
-router.get('/blogpost/:id', async (req, res) => {
-  try {
-    const dbSelectedBlogPost = await BlogPost.findByPk(req.params.id, {
-        include: [ { model: Comment } ]
-    });
-
-   const selectedBlogPost = dbSelectedBlogPost.get({ plain: true });
-    // Send over the 'loggedIn' session variable to the 'gallery' template
-    res.render('viewBlogPost', { selectedBlogPost, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 // Login route
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect to the homepage

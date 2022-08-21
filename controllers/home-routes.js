@@ -30,6 +30,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+router.get('/new', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('newblogpost');
+});
+
 // Login route
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect to the homepage

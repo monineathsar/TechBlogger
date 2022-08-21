@@ -37,7 +37,23 @@ router.get('/:id', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
-  });
+});
+
+router.post('/', async (req, res) => {
+    console.log(req.body);
+    try {
+        const createBlogPost = await BlogPost.create(
+            {
+                user_id: req.session.user,
+                title: req.body.title,
+                content: req.body.content,
+            },
+        );
+        res.status(201).send();
+    } catch (error) {
+        res.status(404).send("Fail to update blog post.");
+    }
+});
 
   // when user updates a blog post
 router.put('/:id', async (req, res) => {
@@ -46,9 +62,7 @@ router.put('/:id', async (req, res) => {
             {
                 userId: req.session.user.id,
                 title: req.body.title,
-                user: req.body.username,
                 content: req.body.content,
-                date: req.body.date,
             },
             {
                 where: { id: req.params.id }

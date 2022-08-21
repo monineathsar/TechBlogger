@@ -17,6 +17,12 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({});
 const viewsPath = path.join(__dirname, './views');
 
+hbs.handlebars.registerHelper('dateFormat', function (dateTime) {
+    if (!dateTime) {
+        return "N/A";
+    }
+    return new Date(dateTime).toLocaleDateString();
+});
 
 // express session settings
 

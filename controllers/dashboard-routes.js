@@ -22,13 +22,31 @@ router.get('/', async (req, res) => {
 // When user selects on a single post on their dashboard
 router.get('/blogpost/:id', async (req, res) => {
   try {
-    const dbSelectedBlogPost = await BlogPost.findByPk(req.params.id, {
-        include: [ { model: Comment } ]
-    });
     
-    const selectedBlogPost = dbSelectedBlogPost.get({ plain: true });
+    const dbBlogPost = await BlogPost.findAll({
+      where: {id: req.params.id},
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'content', 'created_at'],
+          include: {
+              model: User,
+              attributes:['username']
+          }
+        },
+        {
+          model: User,
+          attributes:['username']
+        }
+      ]
+    });
+
+    const blogPost = dbBlogPost.map(blogPostData => blogPostData.get({plain:true}));
     // Send over the 'loggedIn' session variable to the 'gallery' template
-    res.render('viewBlogPost', { selectedBlogPost, loggedIn: req.session.loggedIn });
+    res.render('viewsinglepost', { 
+      loggedIn: req.session.loggedIn,
+      blogPost: blogPost[0]
+      });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

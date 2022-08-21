@@ -1,6 +1,32 @@
-{{> postsummary singleBlogPost}}
+<section id="blogPost" class="blogPost">
+    <main href="/blogpost/"+{{blogPost.id}}>
+      <section>
+        <h3>{{blogPost.title}}</h3>
+        <h6>Posted by {{blogPost.user.username}} on {{blogPost.created_at}}</h6>
+      </section>
+      <section>
+        <p>{{blogPost.content}}</p>
+      </section>
+    </main>
+</section>
+<section>
+  
+  {{#each blogPost.comments as |comment| }}
+  {{!-- comments section for selected blog post --}}
+  <main>
+    <section>
+      <h3></h3>
+    </section>
+    <section>
+      <p>{{comment.content}}</p>
+    </section>
+    <section>
+      -{{comment.user.username}}, {{dateFormat comment.created_at}}
+    </section>
+  </main>
+  {{/each}}
 
-{{#if loggedIn}}
+</section>
 <div class="card">
     <h3 class="card-header"></h3>
     <form class="card-body comment-form" id="comment-form">
@@ -11,10 +37,3 @@
         <button type="submit" class="btn">Post Comment</button>
     </form>
 </div>
-{{/if}}
-
-{{> comments singleBlogPost.comments}}
-
-{{#if loggedIn}}
-<script src="/javascript/comment.js"></script>
-{{/if}}

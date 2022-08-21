@@ -13,6 +13,11 @@ BlogPost.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
+BlogPost.hasMany(Comment, {
+    foreignKey: 'blogPost_id',
+    onDelete: 'CASCADE'
+})
+
 // user can have many comments
 User.hasMany(Comment, {
     foreignKey: 'user_id',

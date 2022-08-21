@@ -8,10 +8,10 @@
           <h6> Posted on {{blogPost.date}}</h6>
         </section>
         <footer>
-            <button id="editBtn" onclick="getJobForm('{{blogPost.id}}')">
+            <button id="editBtn" onclick="getEditBlogPost('{{blogPost.id}}')">
               <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
             </button>
-            <button id="deleteBtn" onclick="deleteCard('{{{blogPost.id}}}')">
+            <button id="deleteBtn" onclick="deleteBlogPost('{{blogPost.id}}')">
               <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
             </button>
         </footer>

@@ -24,6 +24,16 @@ hbs.handlebars.registerHelper('dateFormat', function (dateTime) {
     return new Date(dateTime).toLocaleDateString();
 });
 
+hbs.handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+    console.log(v1 + " " + operator + " " + v2);
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+
 // express session settings
 const sessionSettings = {
     secret: process.env.SESSION_SECRET,
@@ -38,7 +48,7 @@ const sessionSettings = {
 // handlebars template engine
 
 app.engine('handlebars', hbs.engine);
-app.set('views', viewsPath);
+//app.set('views', viewsPath);
 app.set('view engine', 'handlebars');
 
 

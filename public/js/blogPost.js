@@ -1,23 +1,27 @@
-const blogTitle = document.getElementById('blogTitle');
-const blogContent = document.getElementById('blogContent');
-const createPostBtn = document.getElementById('createPostBtn');
+function getEditBlogPost(id) {
+    window.location.href = '/blogpost/'+id+'/edit';
+}
 
-createPostBtn.addEventListener('click', async (event) => {
-    const title = blogTitle.value;
-    const content = blogContent.value;
+async function deleteBlogPost(id) {
     try{
-        const response = await fetch('/blogpost/' , {
-            method: 'POST',
+        const response = await fetch('/blogpost/'+id , {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title: title,
-                content: content
-            })
-        })
-        window.location.href = '/myposts';
+            }
+        });
+        
+        if (response.ok) {
+            window.location.href = '/myposts';
+        } else {
+            alert("Not your business");
+        }
+        
     } catch (error) {
         alert(error);
     }
-});
+}
+
+async function postComment(id) {
+
+}

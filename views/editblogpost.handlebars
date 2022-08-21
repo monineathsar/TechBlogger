@@ -6,11 +6,11 @@
     <main>
         <div>
             <label for="BlogTitle" class="">Blog Title (Required) </label>
-            <input type="input" class="form-control" id="blogTitle" value={{singleBlog.title}}>
+            <input type="input" class="form-control" id="blogTitle" value={{blogPost.title}}>
         </div>
         <div>
             <label for="BlogContent" class="">Content (Required) </label>
-            <textarea class="form-control" id="blogContent" rows="3">{{singleBlog.content}}</textarea>
+            <textarea class="form-control" id="blogContent" rows="3">{{blogPost.content}}</textarea>
         </div>
         <footer>
             <button type="submit" class="btn btn-primary" id="createBtn">Update Post</button>

@@ -4,35 +4,61 @@ const { User, BlogPost, Comment } = require('../models');
 // When user selects on a single post on home page
 router.get('/:id', async (req, res) => {
     try {
-      
-      const dbBlogPost = await BlogPost.findAll({
-        where: {id: req.params.id},
-        include: [
-          {
-            model: Comment,
-            attributes: ['id', 'content', 'created_at'],
-            include: {
+        const dbBlogPost = await BlogPost.findOne({
+            where: {id: req.params.id},
+            include: [
+            {
+                model: Comment,
+                attributes: ['id', 'content', 'created_at'],
+                include: {
+                    model: User,
+                    attributes:['username']
+                }
+            },
+            {
                 model: User,
                 attributes:['username']
             }
-          },
-          {
-            model: User,
-            attributes:['username','id']
-          }
-        ]
-      });
-  
-      const blogPost = dbBlogPost.map(blogPostData => blogPostData.get({plain:true}));
-      console.log(blogPost);
-      console.log("helqwe");
-      console.log(req.session.id);
-      // Send over the 'loggedIn' session variable to the 'gallery' template
-      res.render('viewsinglepost', { 
-        loggedIn: req.session.loggedIn,
-        user: req.session.id,
-        blogPost: blogPost[0]
+            ]
         });
+        const dbUser = await User.findOne({
+            where: {id: req.session.user},
+            attributes: ['username']});
+    
+        
+        const user = dbUser.get({plain:true});
+        const blogPost = dbBlogPost.get({plain:true});
+         //Send over the 'loggedIn' session variable to the 'gallery' template
+        res.status(201).render('viewsinglepost', {
+            loggedIn: req.session.loggedIn,
+            blogPost: blogPost,
+            loginUser: user
+        });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+});
+
+// When user selects on a single post on home page
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const dbBlogPost = await BlogPost.findOne({
+            where: {id: req.params.id, user_id: req.session.user},
+            attributes: ['title', 'content']
+        });
+
+        if (dbBlogPost == null) {
+            res.redirect('/myposts');
+            return;
+        }
+
+        const blogPost = dbBlogPost.get({plain:true});
+        // Send over the 'loggedIn' session variable to the 'gallery' template
+        res.render('editblogpost', { 
+            loggedIn: req.session.loggedIn,
+            blogPost: blogPost
+            });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -79,12 +105,18 @@ router.delete('/:id', async (req, res) => {
     try {
         const deleteBlogPost = await BlogPost.destroy({
             where: {
-                id: req.params.id
+                id: req.params.id,
+                user_id: req.session.user
             },
         });
 
-        res.json(deleteBlogPost);
+        console.log("Hello");
 
+        if (deleteBlogPost == null) {
+            res.status(404).send();
+        } else {
+            res.status(201).send();
+        }
     } catch (error) {
         console.error(error);
     }

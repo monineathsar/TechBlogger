@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 
 // When user adds a new comment under a blog post
-router.post('/blogpost/:id', async (req, res) => {
+router.post('/', async (req, res) => {
 
     const newComment = await Comment.create({
         userId: req.session.user.id,
@@ -15,7 +15,7 @@ router.post('/blogpost/:id', async (req, res) => {
 });
 
 // When user updates a comment under a blog post
-router.put('/blogpost/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const updateComment = await Comment.update(
             {
@@ -35,7 +35,7 @@ router.put('/blogpost/:id', async (req, res) => {
 });
 
 // when user deletes a comment under a blog post
-router.delete('/blogpost/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deleteComment = await Comment.destroy({
             where: {

@@ -19,10 +19,6 @@ BlogPost.init(
       type: DataTypes.BLOB,
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

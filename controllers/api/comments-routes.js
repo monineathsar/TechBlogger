@@ -4,14 +4,17 @@ const { Comment } = require('../../models');
 // When user adds a new comment under a blog post
 router.post('/', async (req, res) => {
 
-    const newComment = await Comment.create({
-        userId: req.session.user.id,
-        content: req.body.content,
-        user: req.body.username,
-        date: req.body.date,
-    });
-
-    res.send(newComment);
+    try {
+        const newComment = await Comment.create({
+            user_id: req.session.user,
+            content: req.body.content,
+            blogPost_id: req.body.blogPost_id
+        });
+        console.log(newComment);
+        res.status(200).send();
+    } catch (e) {
+        console.log(e);
+    }
 });
 
 // When user updates a comment under a blog post
@@ -19,7 +22,7 @@ router.put('/:id', async (req, res) => {
     try {
         const updateComment = await Comment.update(
             {
-                userId: req.session.user.id,
+                user_id: req.session.user.id,
                 content: req.body.content,
                 user: req.body.username,
                 date: req.body.date,
@@ -43,7 +46,7 @@ router.delete('/:id', async (req, res) => {
             },
         });
 
-        res.json(deleteComment);
+        res.status(201).send();
 
     } catch (error) {
         console.error(error);

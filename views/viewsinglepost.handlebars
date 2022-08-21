@@ -9,23 +9,37 @@
       </section>
     </main>
     {{#ifCond blogPost.user.username '==' loginUser.username}}
-      <button id="editBtn" onclick="getEditBlogPost('{{blogPost.id}}')">
+      <button  onclick="getEditBlogPost('{{blogPost.id}}')">
           <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
       </button>
-      <button id="deleteBtn" onclick="deleteBlogPost('{{blogPost.id}}')">
+      <button onclick="deleteBlogPost('{{blogPost.id}}')">
           <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
       </button>
     {{/ifCond}}
 </section>
 <section>
   {{#each blogPost.comments as |comment|}}
-  <main>
+  <main id="card_{{comment.id}}">
     <section>
-      <p>{{comment.content}}</p>
+      <textarea id="textArea_{{comment.id}}" disabled="true">{{comment.content}}</textarea>
     </section>
     <section>
       -{{comment.user.username}}, {{dateFormat comment.created_at}}
     </section>
+    {{#ifCond comment.user.username '==' ../loginUser.username}}
+      <button id="editBtn_{{comment.id}}" onclick="editComment('{{comment.id}}')">
+          <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
+      </button>
+      <button id="deleteBtn_{{comment.id}}" onclick="deleteComment('{{comment.id}}')">
+          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+      </button>
+      <button id="saveEditBtn_{{comment.id}}" onclick="saveEditComment('{{comment.id}}')" style="display: none;">
+          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+      </button>
+      <button id="cancelBtn_{{comment.id}}" onclick="saveEditComment('{{comment.id}}')" style="display: none;">
+          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+      </button>
+    {{/ifCond}}
   </main>
   {{/each}}
 </section>
@@ -34,9 +48,9 @@
     <form class="card-body comment-form" id="comment-form">
 
         <label class="form-label">Comment</label>
-        <input id="comment" name="comment-body" class="form-input"/>
+        <input id="commentInput" name="comment-body" class="form-input"/>
 
-        <button class="btn">Post Comment</button>
+        <button class="btn" onclick="postComment('{{blogPost.id}}')">Post Comment</button>
     </form>
 </div>
 <script src="../js/blogpost.js"></script>

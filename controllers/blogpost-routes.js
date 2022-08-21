@@ -45,7 +45,7 @@ router.get('/:id/edit', async (req, res) => {
     try {
         const dbBlogPost = await BlogPost.findOne({
             where: {id: req.params.id, user_id: req.session.user},
-            attributes: ['title', 'content']
+            attributes: ['title', 'content', 'id']
         });
 
         if (dbBlogPost == null) {
@@ -66,7 +66,6 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    console.log(req.body);
     try {
         const createBlogPost = await BlogPost.create(
             {
@@ -109,9 +108,6 @@ router.delete('/:id', async (req, res) => {
                 user_id: req.session.user
             },
         });
-
-        console.log("Hello");
-
         if (deleteBlogPost == null) {
             res.status(404).send();
         } else {

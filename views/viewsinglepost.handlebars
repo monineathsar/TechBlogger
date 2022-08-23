@@ -1,56 +1,65 @@
-<section id="blogPost" class="blogPost">
-    <main>
-      <section>
-        <h3>{{blogPost.title}}</h3>
-        <h6>Posted by {{blogPost.user.username}} on {{dateFormat blogPost.createdAt}}</h6>
-      </section>
-      <section>
-        <p>{{blogPost.content}}</p>
-      </section>
-    </main>
-    {{#ifCond blogPost.user.username '==' loginUser.username}}
-      <button  onclick="getEditBlogPost('{{blogPost.id}}')">
-          <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
+<section id="blogPost" class="blogPostContainer">
+  <main class="blogPosts">
+    <section class="blogTitle">
+      <h3>{{blogPost.title}}</h3>
+      <h5>Posted by {{blogPost.user.username}} on {{dateFormat blogPost.createdAt}}</h5>
+    </section>
+    <section class="blogContent">
+      <p>{{blogPost.content}}</p>
+    </section>
+    <footer class="icons">
+      {{#ifCond blogPost.user.username '==' loginUser.username}}
+      <button onclick="getEditBlogPost('{{blogPost.id}}')">
+        <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
       </button>
       <button onclick="deleteBlogPost('{{blogPost.id}}')">
-          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+        <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
       </button>
-    {{/ifCond}}
-</section>
-<section>
-  {{#each blogPost.comments as |comment|}}
-  <main id="card_{{comment.id}}">
-    <section>
-      <textarea id="textArea_{{comment.id}}" disabled="true">{{comment.content}}</textarea>
-    </section>
-    <section>
-      -{{comment.user.username}}, {{dateFormat comment.created_at}}
-    </section>
-    {{#ifCond comment.user.username '==' ../loginUser.username}}
-      <button id="editBtn_{{comment.id}}" onclick="editComment('{{comment.id}}')">
-          <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
-      </button>
-      <button id="deleteBtn_{{comment.id}}" onclick="deleteComment('{{comment.id}}')">
-          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
-      </button>
-      <button id="saveEditBtn_{{comment.id}}" onclick="saveEditComment('{{comment.id}}')" style="display: none;">
-          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
-      </button>
-      <button id="cancelBtn_{{comment.id}}" onclick="saveEditComment('{{comment.id}}')" style="display: none;">
-          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
-      </button>
-    {{/ifCond}}
+      {{/ifCond}}
+    </footer>
+    <br>
   </main>
-  {{/each}}
 </section>
-<div class="card">
-    <h3 class="card-header"></h3>
-    <form class="card-body comment-form" id="comment-form">
 
-        <label class="form-label">Comment</label>
-        <input id="commentInput" name="comment-body" class="form-input"/>
+{{#each blogPost.comments as |comment|}}
+<section class="commentContainer">
+  <h4>Comments:</h4>
+  <main id="card_{{comment.id}}" class="blogPosts">
+    <section class="commentTitle">
+      <h5>
+        {{comment.user.username}} posted comment on {{dateFormat comment.created_at}}
+      </h5>
+      {{#ifCond comment.user.username '==' ../loginUser.username}}
+      <footer class="icons">
+        <button id="editBtn_{{comment.id}}" onclick="editComment('{{comment.id}}')">
+          <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
+        </button>
+        <button id="deleteBtn_{{comment.id}}" onclick="deleteComment('{{comment.id}}')">
+          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+        </button>
+        <button id="saveEditBtn_{{comment.id}}" onclick="saveEditComment('{{comment.id}}')" style="display: none;">
+          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+        </button>
+        <button id="cancelBtn_{{comment.id}}" onclick="saveEditComment('{{comment.id}}')" style="display: none;">
+          <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+        </button>
+      </footer>
+      {{/ifCond}}
+    </section>
+    <section class="commentContent">
+      <p id="textArea_{{comment.id}}" disabled="true">{{comment.content}}</p>
+    </section>
 
-        <button class="btn" onclick="postComment('{{blogPost.id}}')">Post Comment</button>
-    </form>
-</div>
+  </main>
+</section>
+{{/each}}
+<section class="commentSection">
+  <h4>Make a comment:</h4>
+  <form>
+    <textarea></textarea>
+    <br>
+    <br>
+    <button class="btn" onclick="postComment('{{blogPost.id}}')">Post Comment</button>
+  </form>
+</section>
 <script src="../js/blogpost.js"></script>

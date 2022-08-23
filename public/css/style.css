@@ -77,7 +77,8 @@ a:active {
     padding: 0px 20px;
 }
 
-.blogContent {
+.blogContent,
+.commentContent {
     padding: 0px 20px;
 }
 
@@ -98,7 +99,8 @@ a:active {
     align-items: center;
 }
 
-textarea {
+.editPostForm textarea,
+.newPostForm textarea {
     resize: none;
     min-height: 200PX;
     width: 500px;
@@ -110,7 +112,36 @@ input {
     height: 30px;
     font-size: larger;
 }
-.newPostForm,
-.editPostForm {
+.commentContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column nowrap;
+    padding: 0px 30px;
+}
 
+.commentTitle {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid black 1px;
+    background-color: lightgrey;
+    padding: 0px 20px;
+}
+
+.commentTitle h5 {
+    margin: 5px;
+}
+
+.commentSection {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    padding: 0px 30px;
+}
+
+.commentSection textarea {
+    resize: none;
+    min-height: 80px;
+    width: 700px;
+    font-size: 20px;
 }

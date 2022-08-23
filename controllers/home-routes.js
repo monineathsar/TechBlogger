@@ -3,7 +3,6 @@ const { BlogPost, Comment, User } = require('../models');
 
 // GET all blog posts for homepage
 router.get('/', async (req, res) => {
-  console.log(req.session);
   if (!req.session.loggedIn) {
     return res.redirect('/login')
   }
@@ -36,7 +35,9 @@ router.get('/new', (req, res) => {
     res.redirect('/login');
     return;
   }
-  res.render('newblogpost');
+  res.render('newblogpost', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 // Login route

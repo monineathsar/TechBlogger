@@ -1,17 +1,25 @@
 {{!-- new blog form section --}}
-<section>
+<section class="newPostContainer">
     <div>
-        Create new post below:
+        <h2>Create new post below: </h2>
     </div>
-    <main>
+    <br>
+    <main class="newPostForm">
         <div>
             <label for="BlogTitle" class="">Blog Title (Required) </label>
+            <br>
+            <br>
             <input type="input" class="form-control" id="blogTitle">
         </div>
+        <br>
+        <br>
         <div>
             <label for="BlogContent" class="">Content (Required) </label>
+            <br>
+            <br>
             <textarea class="form-control" id="blogContent" rows="3"></textarea>
         </div>
+        <br>
         <footer>
             <button type="submit" class="" id="createPostBtn">Post</button>
         </footer>

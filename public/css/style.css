@@ -54,7 +54,10 @@ a:active {
     font-size: 15px;
 }
 
-.blogPostContainer {
+.blogPostContainer,
+.newPostContainer,
+.editPostContainer {
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: column nowrap;
@@ -80,10 +83,6 @@ a:active {
 
 .newPostBtn button {
     font-size: 22px;
-}
-
-.newPostBtn {
-    display: flex;
     align-items: center;
 }
 
@@ -95,5 +94,23 @@ a:active {
 
 .pageTitle {
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+textarea {
+    resize: none;
+    min-height: 200PX;
+    width: 500px;
+    font-size: 20px;
+}
+
+input {
+    width: 500px;
+    height: 30px;
+    font-size: larger;
+}
+.newPostForm,
+.editPostForm {
+
 }

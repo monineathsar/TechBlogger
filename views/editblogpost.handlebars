@@ -1,15 +1,22 @@
 {{!-- edit blog post form --}}
-<section id="cards" class="cards">
+<section id="cards" class="editPostContainer">
     <div>
-        Edit your post below:
+        <h2>Edit your post below: </h2>
     </div>
-    <main>
+    <br>
+    <main class="editPostForm">
         <div>
             <label for="BlogTitle" class="">Blog Title (Required) </label>
-            <textarea type="input" class="form-control" id="blogTitle">{{blogPost.title}}</textarea>
+            <br>
+            <br>
+            <input type="input" class="form-control" id="blogTitle" value="{{blogPost.title}}">
         </div>
+        <br>
+        <br>
         <div>
             <label for="BlogContent" class="">Content (Required) </label>
+            <br>
+            <br>
             <textarea class="form-control" id="blogContent" rows="3">{{blogPost.content}}</textarea>
         </div>
         <footer>

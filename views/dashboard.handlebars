@@ -1,21 +1,21 @@
+<div class="pageTitle">
+  <h2>My Posts</h2>
+  <div class="newPostBtn">
+    <button><a class="link" href="/new">+ New Post</a></button>
+  </div>
+</div>
 <section id="blogPosts" class="blogPostContainer">
-  <div class="pageTitle">
-      <div>
-        <h2>My Posts</h2>
-      </div>
-      <div class="newPostBtn">
-        <button class="btn"><a class="link" href="/new">+ New Post</a></button>
-      </div>
-    </div>
   {{#each blogPosts as |blogPost|}}
   <main class="blogPosts">
-    <section class="blogTitle">
-      <h3>{{blogPost.title}}</h3>
-      <h5> Posted on {{blogPost.date}}</h5>
-    </section>
-    <section class="blogContent">
-      <p>{{blogPost.content}}</p>
-    </section>
+    <a href="/blogpost/{{blogPost.id}}">
+      <section class="blogTitle">
+        <h3>{{blogPost.title}}</h3>
+        <h5> Posted on {{dateFormat blogPost.createdAt}}</h5>
+      </section>
+      <section class="blogContent">
+        <p>{{blogPost.content}}</p>
+      </section>
+    </a>
     <footer class="icons">
       <button id="editBtn" onclick="getEditBlogPost('{{blogPost.id}}')">
         <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
@@ -26,6 +26,9 @@
     </footer>
     <br>
   </main>
+  <br>
+  <br>
+  <br>
   {{/each}}
 </section>
 

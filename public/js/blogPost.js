@@ -1,25 +1,24 @@
-const commentInput = document.getElementById('commentInput');
-
+const commentInput = document.getElementById('commentContent');
 
 function getEditBlogPost(id) {
-    window.location.href = '/blogpost/'+id+'/edit';
+    window.location.href = '/blogpost/' + id + '/edit';
 }
 
 async function deleteBlogPost(id) {
-    try{
-        const response = await fetch('/blogpost/'+id , {
+    try {
+        const response = await fetch('/blogpost/' + id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        
+
         if (response.ok) {
             window.location.href = '/myposts';
         } else {
             alert("Not your business");
         }
-        
+
     } catch (error) {
         alert(error);
     }
@@ -42,8 +41,8 @@ async function postComment(id) {
             })
         });
         if (response.ok) {
-            window.location.href = '/blogpost/'+id;
-        } 
+            window.location.href = '/blogpost/' + id;
+        }
     } catch (error) {
         alert(error);
     }
@@ -52,7 +51,7 @@ async function postComment(id) {
 async function deleteComment(id) {
 
     try {
-        const response = await fetch('/api/comments/'+id, {
+        const response = await fetch('/api/comments/' + id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,26 +59,25 @@ async function deleteComment(id) {
         });
         if (response.ok) {
             window.location.reload();
-        } 
+        }
     } catch (error) {
         alert(error);
     }
 }
 
 async function editComment(id) {
-    const editBtn =  document.getElementById('editBtn_'+id);
-    const deleteBtn =  document.getElementById('deleteBtn_'+id);
-    const saveBtn =  document.getElementById('saveEditBtn_'+id);
-    const cancelBtn =  document.getElementById('cancelBtn_'+id);
-    const textAreaBtn = document.getElementById('textArea_'+id)
+    const editCommentBtn = document.getElementById('editBtn_' + id);
+    const deleteCommentBtn = document.getElementById('deleteBtn_' + id);
+    const saveCommentBtn = document.getElementById('saveEditBtn_' + id);
+    const cancelEditBtn = document.getElementById('cancelBtn_' + id);
+    const textAreaBtn = document.getElementById('textArea_' + id)
 
-    editBtn.style.display = "none";
-    deleteBtn.style.display = "none";
-    saveBtn.style.display = "block";
-    cancelBtn.style.display = "block";
-    //find the right way
+    editCommentBtn.style.display = "none";
+    deleteCommentBtn.style.display = "none";
+    saveCommentBtn.style.display = "block";
+    cancelEditBtn.style.display = "block";
+
     textAreaBtn.attributes.disabled = false;
-
 }
 
 async function saveEditComment(id) {
@@ -88,7 +86,7 @@ async function saveEditComment(id) {
         return;
     }
     try {
-        const response = await fetch('/api/comments/'+id, {
+        const response = await fetch('/api/comments/' + id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -99,7 +97,7 @@ async function saveEditComment(id) {
         });
         if (response.ok) {
             window.location.reload();
-        } 
+        }
     } catch (error) {
         alert(error);
     }

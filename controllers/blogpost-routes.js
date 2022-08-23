@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// When user selects on a single post on home page
+// When user selects on a single post on dashboard page in order to edit post
 router.get('/:id/edit', async (req, res) => {
     try {
         const dbBlogPost = await BlogPost.findOne({
@@ -74,7 +74,7 @@ router.post('/', async (req, res) => {
                 content: req.body.content,
             },
         );
-        res.status(201).send();
+        res.status(201).send(createBlogPost);
     } catch (error) {
         res.status(404).send("Fail to update blog post.");
     }
@@ -85,7 +85,7 @@ router.put('/:id', async (req, res) => {
     try {
         const updateBlogPost = await BlogPost.update(
             {
-                userId: req.session.user.id,
+                user_id: req.session.user.id,
                 title: req.body.title,
                 content: req.body.content,
             },

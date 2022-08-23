@@ -10,8 +10,7 @@ router.post('/', async (req, res) => {
             content: req.body.content,
             blogPost_id: req.body.blogPost_id
         });
-        console.log(newComment);
-        res.status(200).send();
+        res.status(200).send(newComment);
     } catch (e) {
         console.log(e);
     }
@@ -24,8 +23,6 @@ router.put('/:id', async (req, res) => {
             {
                 user_id: req.session.user.id,
                 content: req.body.content,
-                user: req.body.username,
-                date: req.body.date,
             },
             {
                 where: { id: req.params.id }

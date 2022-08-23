@@ -54,12 +54,12 @@ app.set('view engine', 'handlebars');
 
 // middlewares
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 app.use(expsesh(sessionSettings));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// routes for 
+// routes for application
 app.use(routes);
 
 // server listener + sequelize sync

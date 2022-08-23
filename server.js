@@ -65,5 +65,5 @@ app.use(routes);
 // server listener + sequelize sync
 
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Go to http://localhost:3001/'));
+    app.listen(process.env.PORT || PORT, () => console.log('Go to http://localhost:3001/'));
 });

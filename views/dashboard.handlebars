@@ -1,23 +1,32 @@
-<section id="blogPosts" class="blogPosts">
-    <h2>Your Posts</h2>
-    {{#each blogPosts as |blogPost|}}
-      <main>
-        <section>
-          <h3>{{blogPost.title}}</h3>
-          <h4>{{blogPost.content}}</h4>
-          <h6> Posted on {{blogPost.date}}</h6>
-        </section>
-        <footer>
-            <button id="editBtn" onclick="getEditBlogPost('{{blogPost.id}}')">
-              <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
-            </button>
-            <button id="deleteBtn" onclick="deleteBlogPost('{{blogPost.id}}')">
-              <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
-            </button>
-        </footer>
-      </main>
-    {{/each}}
-  </section>
-<script src="js/dashboard.js"></script>
+<section id="blogPosts" class="blogPostContainer">
+  <div class="pageTitle">
+      <div>
+        <h2>My Posts</h2>
+      </div>
+      <div class="newPostBtn">
+        <button class="btn"><a class="link" href="/new">+ New Post</a></button>
+      </div>
+    </div>
+  {{#each blogPosts as |blogPost|}}
+  <main class="blogPosts">
+    <section class="blogTitle">
+      <h3>{{blogPost.title}}</h3>
+      <h5> Posted on {{blogPost.date}}</h5>
+    </section>
+    <section class="blogContent">
+      <p>{{blogPost.content}}</p>
+    </section>
+    <footer class="icons">
+      <button id="editBtn" onclick="getEditBlogPost('{{blogPost.id}}')">
+        <img src="/images/pencil_icon.png" align="center" width="20px" height="20px" alt="edit icon">
+      </button>
+      <button id="deleteBtn" onclick="deleteBlogPost('{{blogPost.id}}')">
+        <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
+      </button>
+    </footer>
+    <br>
+  </main>
+  {{/each}}
+</section>
 
-<button class="btn"><a class="link" href="/new">+ New Post</a></button>
+<script src="js/dashboard.js"></script>

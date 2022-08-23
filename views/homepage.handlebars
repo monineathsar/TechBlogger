@@ -1,13 +1,26 @@
-<section id="blogPosts" class="blogPosts">
+<section id="blogPosts" class="blogPostContainer">
+   <div class="pageTitle">
+      <div>
+        <h2>Featured Posts</h2>
+      </div>
+      <div class="newPostBtn">
+        <button class="btn"><a class="link" href="/new">+ New Post</a></button>
+      </div>
+    </div>
   {{#each blogPosts as |blogPost|}}
+  <div class="blogPosts">
     <a href="/blogpost/{{blogPost.id}}">
-      <section>
+      <section class="blogTitle">
         <h3>{{blogPost.title}}</h3>
-        <h6>Posted by {{blogPost.user.username}} on {{blogPost.date}}</h6>
+        <h5>Posted by {{blogPost.user.username}} on {{blogPost.date}}</h5>
       </section>
-      <section>
+      <section class="blogContent">
         <p>{{blogPost.content}}</p>
       </section>
     </a>
+  </div>
+  <br>
+  <br>
+  <br>
   {{/each}}
 </section>

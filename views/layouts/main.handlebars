@@ -14,24 +14,26 @@
       <h1>
         <a href="/"></a>
       </h1>
-      <nav>
+      <nav class="navContainer">
         <!-- Conditionally render login or logout links -->
         {{#if loggedIn}}
-        <a href="/">Home</a> |
-        <a href="/myposts">Dashboard</a> |
-        <button class="no-button" id="logoutBtn">Logout</button>
+        <div class="navTabs">
+          <a href="/">Home</a> |
+          <a href="/myposts">Dashboard</a> |
+        </div>
+        <div>
+          <button class="navLogout" id="logoutBtn">Logout</button>
+        </div>
         {{/if}}
       </nav>
     </header>
+    <br>
     <main>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
-    </footer>
   </div>
-
+  <br>
   <!-- Render script for logged in users only -->
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>

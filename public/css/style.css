@@ -21,3 +21,79 @@ h1 {
 .pageForm {
     padding-right: 100px;
 }
+
+.navContainer {
+    padding: 5px 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+}
+
+.navTabs a {
+    font-size: 22px;
+    font-weight: 200;
+}
+
+a:link { 
+    text-decoration: none; color: black; 
+}
+
+a:visited { 
+    text-decoration: none; color: black; 
+}
+
+a:hover { 
+    text-decoration: none; color: black; 
+}
+
+a:active { 
+    text-decoration: none; color: black; 
+}
+
+.navLogout {
+    font-size: 15px;
+}
+
+.blogPostContainer {
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    padding: 0px 30px;
+}
+
+.blogPosts {
+    flex-wrap: wrap;
+    border: solid black 1px;
+}
+
+.blogTitle {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid black 1px;
+    background-color: darkgrey;
+    padding: 0px 20px;
+}
+
+.blogContent {
+    padding: 0px 20px;
+}
+
+.newPostBtn button {
+    font-size: 22px;
+}
+
+.newPostBtn {
+    display: flex;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 20px;
+}
+
+.pageTitle {
+    display: flex;
+    justify-content: space-evenly
+}

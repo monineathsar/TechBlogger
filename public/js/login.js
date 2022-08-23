@@ -3,6 +3,7 @@ const passwordInput = document.getElementById('passwordInput');
 const loginBtn = document.getElementById('loginBtn');
 
 loginBtn.addEventListener('click', async (event) => {
+    event.preventDefault();
     try {
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();

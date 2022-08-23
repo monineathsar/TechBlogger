@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+h1 {
+    font-family: 'Monoton', cursive;
+    font-size: 72px;
+    font-weight: normal;
+}
+
+.signupLoginContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.pageLogo {
+    border-right: solid black 1px;
+    padding-right: 200px;
+}
+
+.pageForm {
+    padding-right: 100px;
+}

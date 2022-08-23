@@ -1,9 +1,11 @@
 const commentInput = document.getElementById('commentContent');
 
+// edit blog post button in viewSinglePost page
 function getEditBlogPost(id) {
     window.location.href = '/blogpost/' + id + '/edit';
 }
 
+// delete blog post button in viewSinglePost page
 async function deleteBlogPost(id) {
     try {
         const response = await fetch('/blogpost/' + id, {
@@ -24,6 +26,7 @@ async function deleteBlogPost(id) {
     }
 }
 
+// to post a comment button in viewSinglePost Page
 async function postComment(id) {
     const content = commentInput.value;
     if (content.trim() == "") {
@@ -48,6 +51,7 @@ async function postComment(id) {
     }
 }
 
+// delete comment button in viewSinglePost page
 async function deleteComment(id) {
 
     try {
@@ -65,6 +69,7 @@ async function deleteComment(id) {
     }
 }
 
+// edit comment button in viewSinglePost page
 async function editComment(id) {
     const editCommentBtn = document.getElementById('editBtn_' + id);
     const deleteCommentBtn = document.getElementById('deleteBtn_' + id);
@@ -80,6 +85,7 @@ async function editComment(id) {
     textAreaBtn.attributes.disabled = false;
 }
 
+// save the edited comment button in viewSinglePost page
 async function saveEditComment(id) {
     const content = commentInput.value;
     if (content.trim() == "") {

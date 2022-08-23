@@ -1,6 +1,7 @@
 const blogTitle = document.getElementById('blogTitle');
 const blogContent = document.getElementById('blogContent');
 
+// delete blog post button from editPost page
 async function deleteBlogPost(id) {
     try{
         const response = await fetch('/blogpost/'+id , {
@@ -21,6 +22,7 @@ async function deleteBlogPost(id) {
     }
 }
 
+// the update post button in editPost page
 async function updateBlogPost(id) {
     const title = blogTitle.value;
     const content = blogContent.value;

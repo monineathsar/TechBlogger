@@ -4,6 +4,7 @@ const usernameInput = document.getElementById('userNameInput');
 const passwordInput = document.getElementById('passwordInput');
 const signUpBtn = document.getElementById('signUpBtn');
 
+// to create a new account when a user clicks the signup button
 signUpBtn.addEventListener('click', async (event) => {
     event.preventDefault();
     try {

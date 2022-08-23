@@ -2,6 +2,7 @@ const blogTitle = document.getElementById('blogTitle');
 const blogContent = document.getElementById('blogContent');
 const createPostBtn = document.getElementById('createPostBtn');
 
+// to create a new post when 'create post' button is clicked
 createPostBtn.addEventListener('click', async (event) => {
     const title = blogTitle.value;
     const content = blogContent.value;

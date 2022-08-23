@@ -58,4 +58,4 @@ The following animation demonstrates the application functionality:
 
 You can find the deployed Heroku app here :
 
-https://tech-blog-monineathsar.herokuapp.com/
+https://monineathsar-tech-blog.herokuapp.com/

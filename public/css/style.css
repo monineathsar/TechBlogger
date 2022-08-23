@@ -34,19 +34,23 @@ h1 {
     font-weight: 200;
 }
 
-a:link { 
+.editPostForm a:link,
+.newPostForm a:link { 
     text-decoration: none; color: black; 
 }
 
-a:visited { 
+.editPostForm a:visited,
+.newPostForm a:visited { 
     text-decoration: none; color: black; 
 }
 
-a:hover { 
+.editPostForm a:hover,
+.newPostForm a:hover { 
     text-decoration: none; color: black; 
 }
 
-a:active { 
+.editPostForm a:active,
+.newPostForm a:active  { 
     text-decoration: none; color: black; 
 }
 

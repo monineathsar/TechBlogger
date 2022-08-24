@@ -54,7 +54,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 
 The following animation demonstrates the application functionality:
 
-![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./public/images/) 
+![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./public/images/techBloggerMockUp.gif) 
 
 You can find the deployed Heroku app here :
 

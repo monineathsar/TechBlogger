@@ -20,10 +20,10 @@
     <br>
   </main>
 </section>
-<h4 class="commentContainer">Comments:</h4>
+<h4 class="commentSection">Comments:</h4>
 {{#each blogPost.comments as |comment|}}
 <section id="section_{{comment.id}}" class="commentContainer">
-  <main  class="blogPosts">
+  <main class="blogPosts">
     <section class="commentTitle">
       <h5>
         {{comment.user.username}} posted comment on {{dateFormat comment.created_at}}

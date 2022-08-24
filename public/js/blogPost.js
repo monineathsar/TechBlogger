@@ -27,7 +27,7 @@ async function deleteBlogPost(id) {
 }
 
 // to post a comment button in viewSinglePost Page
-async function postComment(id) {
+async function postComment(blogPostId) {
     const content = commentInput.value;
     if (content.trim() == "") {
         return;
@@ -40,11 +40,13 @@ async function postComment(id) {
             },
             body: JSON.stringify({
                 content: content,
-                blogPost_id: id
+                blogPost_id: blogPostId
             })
         });
+
+        
         if (response.ok) {
-            window.location.href = '/blogpost/' + id;
+            window.location.href = '/blogpost/' + blogPostId;
         }
     } catch (error) {
         alert(error);
@@ -70,24 +72,24 @@ async function deleteComment(id) {
 }
 
 // edit comment button in viewSinglePost page
-async function editComment(id) {
-    const editCommentBtn = document.getElementById('editBtn_' + id);
-    const deleteCommentBtn = document.getElementById('deleteBtn_' + id);
-    const saveCommentBtn = document.getElementById('saveEditBtn_' + id);
-    const cancelEditBtn = document.getElementById('cancelBtn_' + id);
-    const textAreaBtn = document.getElementById('textArea_' + id)
+function editComment(id) {
+    const actionCommentBtn = document.getElementById('actionCommentBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const commentContent = document.getElementById('commentContent');
+    const currentSection = document.getElementById('section_'+id);
+    const currentComment = document.getElementById('comment_'+id);
 
-    editCommentBtn.style.display = "none";
-    deleteCommentBtn.style.display = "none";
-    saveCommentBtn.style.display = "block";
-    cancelEditBtn.style.display = "block";
-
-    textAreaBtn.attributes.disabled = false;
+    commentContent.value = currentComment.innerHTML.toString();
+    currentSection.remove();
+    actionCommentBtn.innerText = "Update Comment";
+    actionCommentBtn.setAttribute('onclick', "saveEditComment('"+id+"')");
+    cancelBtn.style.display = "block";
 }
 
 // save the edited comment button in viewSinglePost page
 async function saveEditComment(id) {
-    const content = commentInput.value;
+    const commentContent = document.getElementById('commentContent');
+    const content = commentContent.value;
     if (content.trim() == "") {
         return;
     }
@@ -107,4 +109,8 @@ async function saveEditComment(id) {
     } catch (error) {
         alert(error);
     }
+}
+
+function cancelEditComment() {
+    window.location.reload();
 }

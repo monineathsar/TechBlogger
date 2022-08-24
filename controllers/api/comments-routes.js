@@ -21,14 +21,15 @@ router.put('/:id', async (req, res) => {
     try {
         const updateComment = await Comment.update(
             {
-                user_id: req.session.user.id,
+                user_id: req.session.user,
+                blogPost_id: req.body.blogPost_id,
                 content: req.body.content,
             },
             {
                 where: { id: req.params.id }
             }
         );
-        res.send(updateComment);
+        res.status(200).send(updateComment);
     } catch (error) {
         res.status(404).send("Fail to update comment.");
     }

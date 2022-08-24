@@ -148,3 +148,9 @@ a:visited {
     width: 700px;
     font-size: 20px;
 }
+
+.commentButtons {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}

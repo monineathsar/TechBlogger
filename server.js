@@ -25,7 +25,6 @@ hbs.handlebars.registerHelper('dateFormat', function (dateTime) {
 });
 
 hbs.handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
-    console.log(v1 + " " + operator + " " + v2);
     switch (operator) {
         case '==':
             return (v1 == v2) ? options.fn(this) : options.inverse(this);

@@ -20,10 +20,10 @@
     <br>
   </main>
 </section>
-<h4>Comments:</h4>
+<h4 class="commentContainer">Comments:</h4>
 {{#each blogPost.comments as |comment|}}
-<section class="commentContainer">
-  <main id="card_{{comment.id}}" class="blogPosts">
+<section id="section_{{comment.id}}" class="commentContainer">
+  <main  class="blogPosts">
     <section class="commentTitle">
       <h5>
         {{comment.user.username}} posted comment on {{dateFormat comment.created_at}}
@@ -36,17 +36,12 @@
         <button id="deleteBtn_{{comment.id}}" onclick="deleteComment('{{comment.id}}')">
           <img src="/images/bin_icon.png" align="center" width="15px" height="22px" alt="delete icon">
         </button>
-        <button id="saveEditBtn_{{comment.id}}" onclick="saveEditComment('{{comment.id}}')" style="display: none;">
-          <img src="/images/save.png" align="center" width="16px" height="18px" alt="delete icon">
-        </button>
-        <button id="cancelBtn_{{comment.id}}" onclick="cancelEditComment('{{comment.id}}')" style="display: none;">
-          <img src="/images/close.png" align="center" width="16px" height="18px" alt="delete icon">
-        </button>
+        
       </footer>
       {{/ifCond}}
     </section>
     <section class="commentContent">
-      <p id="textArea_{{comment.id}}" disabled="true">{{comment.content}}</p>
+      <p id="comment_{{comment.id}}">{{comment.content}}</p>
     </section>
   </main>
   <br>
@@ -59,7 +54,10 @@
     <textarea id="commentContent"></textarea>
     <br>
     <br>
-    <button class="btn" onclick="postComment('{{blogPost.id}}')">Post Comment</button>
+    <div class="commentButtons">
+      <button id="actionCommentBtn" class="btn" onclick="postComment('{{blogPost.id}}')">Post Comment</button>
+      <button id="cancelBtn" onclick="cancelEditComment()" style="display: none;">Cancel Edit</button>
+    </div>
   </form>
 </section>
 <script src="/js/blogPost.js"></script>

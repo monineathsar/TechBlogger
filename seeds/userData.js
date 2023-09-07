@@ -3,15 +3,15 @@ const { User } = require('../models');
 const userData = [
   {
     username: 'SalLovesPizza_95',
-    password: '$2b$10$pzkd617K3Tll3avRlf/bceTHm4nBUTJKglTQooiDuaTFzjvkU0iia'
+    password: '$2a$12$00Fq7iqaewR6ltS6L1kMqOOTQ7/2OYmZOL.rOwN5eVQOQDt1BODsW'
   },
   {
     username: 'Lernantino_81',
-    password: '$2b$10$pzkd617K3Tll3avRlf/bceTHm4nBUTJKglTQooiDuaTFzjvkU0iia'
+    password: '$2a$12$00Fq7iqaewR6ltS6L1kMqOOTQ7/2OYmZOL.rOwN5eVQOQDt1BODsW'
   },
   {
     username: 'AmikoIsTheBest',
-    password: '$2b$10$pzkd617K3Tll3avRlf/bceTHm4nBUTJKglTQooiDuaTFzjvkU0iia'
+    password: '$2a$12$00Fq7iqaewR6ltS6L1kMqOOTQ7/2OYmZOL.rOwN5eVQOQDt1BODsW'
   }
 ];
 

@@ -154,3 +154,13 @@ a:visited {
     justify-content: flex-start;
     flex-direction: row;
 }
+
+#demoBtn {
+    background-color: #2ecc71;
+    color: #ffffff;
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+#demoBtn:hover {
+    background-color: #27ae60; /* New color on hover */
+}
